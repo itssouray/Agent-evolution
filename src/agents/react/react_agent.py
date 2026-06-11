@@ -3,7 +3,7 @@ from pprint import pprint
 
 from src.prompts.react_prompt import SYSTEM_PROMPT
 from src.tools.tavily_search import tavily_search
-from src.agents.parser import parse_response
+from src.agents.react.parser import parse_response
 
 client = OpenAI()
 
