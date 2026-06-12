@@ -11,29 +11,27 @@ class Executor:
 
     def execute(self, state):
 
+        MAX_RETRIES = 2
+
         for task in state.tasks:
 
-            print(f"\nExecuting: {task}")
+            feedback = None
 
-            result = self.agent.run(task)
+            for attempt in range(MAX_RETRIES + 1):
 
-            state.results.append(
-                {
-                    "task": task,
-                    "result": result
-                }
-            )
+                result = self.agent.run(
+                    task,
+                    feedback
+                )
 
-            reflection = self.reflector.reflect(
-                task,
-                result
-            )
+                reflection = self.reflector.reflect(
+                    task,
+                    result
+                )
 
-            state.reflections.append(
-                {
-                    "task": task,
-                    **reflection
-                }
-            )
+                if reflection["success"]:
+                    break
+
+                feedback = reflection["feedback"]
 
         return state

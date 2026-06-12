@@ -17,7 +17,18 @@ class ReAct_Agent:
             }
         ]
 
-    def run(self, query:str):
+    def run(self, query:str, feedback: str | None = None):
+        if feedback:
+            query = f"""
+                    Task:
+                        {query}
+
+                    Previous feedback:
+                        {feedback}
+
+                    Please try again and correct any mistakes.
+                    """
+                     
         self.messages.append(
             {
                 "role":"user",
