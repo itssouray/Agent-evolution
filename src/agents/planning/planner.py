@@ -5,12 +5,12 @@ from src.agents.planning.prompts import PLANNER_PROMPT
 
 class Planner:
 
-    def create_plan(self, goal: str):
+    def create_plan(self, state):
 
         response = llm.invoke(
             [
                 ("system", PLANNER_PROMPT),
-                ("user", goal)
+                ("user", state.goal)
             ]
         )
 
@@ -18,4 +18,6 @@ class Planner:
             response.content
         )
 
-        return plan
+        state.tasks = plan
+
+        return state
