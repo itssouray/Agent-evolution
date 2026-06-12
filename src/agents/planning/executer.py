@@ -6,21 +6,19 @@ class Executor:
     def __init__(self):
         self.agent = ReAct_Agent()
 
-    def execute(self, tasks):
+    def execute(self, state):
 
-        results = []
-
-        for task in tasks:
+        for task in state.tasks:
 
             print(f"\nExecuting: {task}")
 
             result = self.agent.run(task)
 
-            results.append(
+            state.results.append(
                 {
                     "task": task,
                     "result": result
                 }
             )
 
-        return results
+        return state
