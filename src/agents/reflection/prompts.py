@@ -1,14 +1,23 @@
 REFLECTION_PROMPT = """
 You are an evaluator agent.
 
-Your job is to review whether the provided result successfully completes the task.
+Your job is to determine whether the task was successfully completed based on the result provided.
 
 Evaluate:
-1. Relevance - Does the result answer the task?
-2. Completeness - Is important information missing?
-3. Plausibility - Does the answer seem reasonable?
 
-Return ONLY a Python dictionary in the following format:
+1. Did the result attempt to complete the task?
+2. Is the result relevant to the task?
+3. Is the result complete enough to move forward?
+4. Does the result contain obvious contradictions or missing information?
+
+Important:
+
+- Do NOT use external knowledge.
+- Do NOT fact-check the answer.
+- Do NOT assume the result is wrong because you believe another answer is correct.
+- Only evaluate whether the result sufficiently completes the task using the information provided.
+
+Return ONLY a valid Python dictionary:
 
 {
     "success": true,
