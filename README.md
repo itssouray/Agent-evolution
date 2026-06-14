@@ -144,22 +144,6 @@ Planned explorations:
 
 ---
 
-## Current Progress
-
-### Completed
-
-* ✅ ReAct
-* ✅ Planning
-* ✅ Planning + Execution
-* ✅ Planning + Execution + Reflection
-* ✅ Planning + Execution + Reflection + Replanning
-
-### In Progress
-
-* 🚧 Memory Systems
-
----
-
 ## Project Structure
 
 ```text
